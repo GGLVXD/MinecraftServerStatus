@@ -1,6 +1,6 @@
-# Minecraft Server Status API Wrapper
+# Minecraft Server Status Checker
 
-A simple Node.js wrapper for the Minecraft server status API (https://api.fryde.id.lv) that provides an easy way to check the status of both Java and Bedrock edition Minecraft servers.
+nodejs package to fetch minecraft server status/info.
 
 ## Features
 
