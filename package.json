@@ -1,5 +1,5 @@
 {
-  "name": "minecraftserverstatus",
+  "name": "@gglvxd/minecraftserverstatus",
   "version": "1.0.0",
   "description": "Simple package to fetch minecraft java & bedrock server status using FrydeAPI",
   "main": "index.js",

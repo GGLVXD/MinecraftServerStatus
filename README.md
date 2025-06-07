@@ -17,7 +17,7 @@ A simple Node.js wrapper for the Minecraft server status API (https://api.fryde.
 ## Installation
 
 ```bash
-npm install GGLVXD/MinecraftServerStatus
+npm install @gglvxd/minecraftserverstatus
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ npm install GGLVXD/MinecraftServerStatus
 ### Basic Usage
 
 ```javascript
-const MinecraftServerStatus = require('GGLVXD/MinecraftServerStatus');
+const MinecraftServerStatus = require('@gglvxd/minecraftserverstatus');
 
 // Create instance (API key optional)
 const statusChecker = new MinecraftServerStatus(); 
