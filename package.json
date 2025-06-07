@@ -1,0 +1,36 @@
+{
+  "name": "minecraftserverstatus",
+  "version": "1.0.0",
+  "description": "Simple package to fetch minecraft java & bedrock server status using FrydeAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GGLVXD/MinecraftServerStatus.git"
+  },
+  "keywords": [
+    "minecraft",
+    "minecraft",
+    "status",
+    "minecraft",
+    "server",
+    "java",
+    "java",
+    "status",
+    "bedrock",
+    "status",
+    "minecraft-bedrock-server",
+    "bedrock-server",
+    "minecraft-bedrock-server",
+    "java-server",
+    "java-http-server"
+  ],
+  "author": "GGLVXD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GGLVXD/MinecraftServerStatus/issues"
+  },
+  "homepage": "https://github.com/GGLVXD/MinecraftServerStatus#readme"
+}
