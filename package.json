@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/GGLVXD/MinecraftServerStatus.git"
   },
+  "publishConfig": {
+    "@GGLVXD:registry": "https://npm.pkg.github.com"
+  },
   "keywords": [
     "minecraft",
     "minecraft",
