@@ -1,5 +1,4 @@
 // index.js
-const https = require('https');
 
 
 class MinecraftServerStatus {
@@ -16,62 +15,51 @@ class MinecraftServerStatus {
         return this._makeRequest('bedrock', ip, port, premium);
     }
 
-    _makeRequest(edition, ip, port, premium) {
+    async _cakeRequest(edition, ip, port, premium) {
         if (!ip) {
-            return Promise.reject(new Error('IP is required'));
+            throw new Error('IP is required');
         }
 
-        const queryParams = new URLSearchParams();
-        queryParams.append('ip', ip);
+        const QUERYPARAMS = new URLSearchParams();
+        QUERYPARAMS.append('ip', ip);
         
         if (port) {
-            queryParams.append('port', port.toString());
+            QUERYPARAMS.append('port', port.toString());
         }
         
         if (this.apiKey) {
-            queryParams.append('api_key', this.apiKey);
+            QUERYPARAMS.append('api_key', this.apiKey);
         }
         
         if (premium) {
-            queryParams.append('premium', premium.toString());
+            QUERYPARAMS.append('premium', premium.toString());
         }
 
-        const options = {
-            hostname: 'api.fryde.id.lv',
-            path: `/v1/minecraft/${edition}?${queryParams.toString()}`,
+        const URL = `https://api.fryde.id.lv/v1/minecraft/${edition}?${QUERYPARAMS.toString()}`;
+        const TIMEOUT = setTimeout(() => controller.abort(), 20000);
+        const OPTIONS = {
             headers: {
-                'User-Agent': "Node.js GGLVXD/MinecraftServerStatus"
+                'User-Agent': 'Node.js GGLVXD/MinecraftServerStatus'
             }
         };
 
-        return new Promise((resolve, reject) => {
-            const req = https.get(options, (res) => {
-                let data = '';
-
-                res.on('data', (chunk) => {
-                    data += chunk;
-                });
-
-                res.on('end', () => {
-                    try {
-                        const parsed = JSON.parse(data);
-                        if (res.statusCode >= 400) {
-                            reject(parsed);
-                        } else {
-                            resolve(parsed);
-                        }
-                    } catch (e) {
-                        reject(new Error('Failed to parse'));
-                    }
-                });
-            });
-
-            req.on('error', (error) => {
-                reject(error);
-            });
-
-            req.end();
-        });
+        try {
+            const RESPONSE = await fetch(URL, OPTIONS);
+            clearTimeout(TIMEOUT);
+            
+            if (!RESPONSE.ok) {
+                const errorData = await RESPONSE.json();
+                throw errorData;
+            }
+            
+            return await RESPONSE.json();
+        } catch (error) {
+            clearTimeout(TIMEOUT);
+            if (error instanceof TypeError && error.message.includes('fetch')) {
+                throw new Error('Network failed');
+            }
+            throw error;
+        }
     }
 }
 
