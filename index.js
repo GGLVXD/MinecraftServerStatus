@@ -15,7 +15,7 @@ class MinecraftServerStatus {
         return this._makeRequest('bedrock', ip, port, premium);
     }
 
-    async _cakeRequest(edition, ip, port, premium) {
+    async _makeRequest(edition, ip, port, premium) {
         if (!ip) {
             throw new Error('IP is required');
         }
